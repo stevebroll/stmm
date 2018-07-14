@@ -47,7 +47,23 @@ tasklist <- which(names_mat==task_id)
 design_1 <- subj_mat[1:(nrow(subj_mat)/2), tasklist]
 design_2 <- subj_mat[(nrow(subj_mat)/2 + 1):nrow(subj_mat), tasklist]
 
+# Optional input for mapping type ---------------------------------------------
+
+if (default) {
+  # set default mapping to be very inflated
+  mapping_id <- 'very_inflated'
+} else {
+  # accept user input for mapping id
+  cat('Enter mapping ID: ')
+  mapping_id <- readLines(con = stdin(), n=1)
+}
+# print assigned task
+cat(paste(c('Mapping ID:', mapping_id, sep=' ')))
+# call separate file for reading in mapped values
+source('/share/RDirectory/stmm/rfunctions/single_subject/create_mappings.R')
+
 # NOTES -----------------------------------------------------------------------
+# need non-local file path
 # interactive()?
 # need to catch input errors
 # need to allow multiple inputs for task
