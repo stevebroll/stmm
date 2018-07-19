@@ -21,8 +21,8 @@ file_path <- paste(c(project_directory, '/Data/MOTOR/Subjects/',
 # read .mat file at path
 
 # Read design mat -------------------------------------------------------------
-library(reshape2)
-library(R.matlab)
+suppressPackageStartupMessages(library(reshape2))
+suppressPackageStartupMessages(library(R.matlab))
 
 design_mat <- readMat(file_path) #R.matlab
 subj_mat   <- design_mat$subjDesignMat
